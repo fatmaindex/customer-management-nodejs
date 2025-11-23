@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>View Customer</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <%- include('partials/sidebar') %>
+
+      <!-- Main -->
+      <main class="main">
+        <div class="navbar">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <h2 style="margin: 0">Customer Details</h2>
+        </div>
+
+        <section class="card" style="max-width: 600px; margin: auto">
+          <h3 style="margin-bottom: 15px">Customer Details</h3>
+
+          <div class="field">
+            <label>Filename</label>
+            <div id="v_filename" class="value"><%= customer.name %></div>
+          </div>
+
+          <div class="row">
+            <div class="field" style="flex: 1">
+             <label>Gender</label>
+                <select
+                  name="gender"
+                  id="gender"
+                >
+                  <option value="Male" <%= customer.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                  <option value="Female" <%= customer.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                  <option value="Other" <%= customer.gender === 'Other' ? 'selected' : '' %>>Other</option>
+                </select>
+            </div>
+            <div class="field" style="width: 120px">
+              <label>Age</label>
+              <div id="v_age" class="value"><%= customer.age %></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Address</label>
+            <div id="v_country" class="value"><%= customer.address %></div>
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <div id="v_email" class="value"><%= customer.email %></div>
+          </div>
+
+          <div class="field">
+            <label>Phone</label>
+            <div id="v_update" class="value"><%= customer.phone %></div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              justify-content: flex-end;
+              margin-top: 12px;
+            "
+          >
+            <a href="/" class="btn">Back</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

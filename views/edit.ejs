@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit Customer</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <%- include('partials/sidebar') %>
+      <!-- Main -->
+      <main class="main">
+        <div class="navbar">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <h2 style="margin: 0">Edit Customer</h2>
+        </div>
+
+        <section class="card" style="max-width: 600px; margin: auto">
+          <h3 style="margin-bottom: 15px">Edit Customer Info</h3>
+
+          <form id="addForm" method="POST" action="/edit/<%= customer.id %>">
+            <div class="field">
+              <label>Fullname</label
+              ><input
+                name="name"
+                id="fullname"
+                required
+                value="<%= customer.name %>"
+              />
+            </div>
+            <div class="row">
+              <div class="field" style="flex: 1">
+                <label>Gender</label>
+                <select
+                  name="gender"
+                  id="gender"
+                  value="<%= customer.gender %>"
+                >
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field" style="width: 120px">
+                <label>Age</label>
+                <input
+                  name="age"
+                  type="number"
+                  id="age"
+                  min="0"
+                  required
+                  value="<%= customer.age %>"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label>Address</label
+              ><input
+                name="address"
+                id="address"
+                required
+                value="<%= customer.address %>"
+              />
+            </div>
+
+            <div class="field">
+              <label>Email</label
+              ><input
+                name="email"
+                type="email"
+                id="email"
+                required
+                value="<%= customer.email %>"
+              />
+            </div>
+            <div class="field">
+              <label>Phone Number</label
+              ><input
+                name="phone"
+                type="tel"
+                id="phone"
+                required
+                value="<%= customer.phone %>"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: 10px;
+                justify-content: flex-end;
+                margin-top: 12px;
+              "
+            >
+              <a href="/" class="btn">cancel</a>
+              <button type="submit" class="btn primary">Save</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
