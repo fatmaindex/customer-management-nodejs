@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 // اربطي LiveReload بالـ Express
 app.use(connectLiveReload());
 
-// 🟢 شغّلي LiveReload server
+//  شغّلي LiveReload server
 
 const liveReloadServer = livereload.createServer();
 liveReloadServer.watch(path.join(__dirname, 'public')); // راقب فولدر public
@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-//  Pages Routing / View Routing
+//  Pages Routing aw View Routing
 //server side rendering
 app.get('/', async (req, res) => {
   try {
@@ -65,7 +65,7 @@ app.get('/add', (req, res) => res.render('add'));
 // 🧩 Middleware للـ JSON
 app.use(express.json());
 
-
+//أي request يبدأ بـ / يمشي على هذا Router
 const customerRoutes = require('./src/routes/customer');
 app.use('/', customerRoutes);
 
