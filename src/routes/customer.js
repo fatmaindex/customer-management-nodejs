@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ctrl = require('../controllers/customerController');
 
+// REST Endpoints
 router.post('/add', ctrl.addCustomer);
 router.get('/view/:id', ctrl.getCustomer);
 router.delete('/delete/:id', ctrl.deleteCustomer);

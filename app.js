@@ -1,3 +1,4 @@
+require('dotenv').config(); 
 const express = require('express');
 const mongoose = require('mongoose');
 const livereload = require('livereload');
@@ -9,14 +10,14 @@ const Customer = require('./src/models/customerSchema');
 
 //banshe2 tatbek express we store it in app variable 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 // 🟢 الاتصال بقاعدة البيانات
 connectDB();
 
 // لدعم بيانات الفورم
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ extended: true }));
 
 // اربطي LiveReload بالـ Express
 app.use(connectLiveReload());
@@ -70,6 +71,7 @@ app.use('/', customerRoutes);
 
 
 // 🚀 تشغيل السيرفر
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
+    
