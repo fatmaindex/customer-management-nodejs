@@ -6,6 +6,7 @@ const connectLiveReload = require('connect-livereload');
 const path = require('path');
 const connectDB = require('./src/config/db');
 const Customer = require('./src/models/customerSchema');
+const customerRoutes = require('./src/routes/customer');
 
 
 //banshe2 tatbek express we store it in app variable 
@@ -15,24 +16,6 @@ const PORT = process.env.PORT || 3000;
 
 // 🟢 الاتصال بقاعدة البيانات
 connectDB();
-
-// لدعم بيانات الفورم
-app.use(express.urlencoded({ extended: true }));
-
-// اربطي LiveReload بالـ Express
-app.use(connectLiveReload());
-
-//  شغّلي LiveReload server
-
-const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'public')); // راقب فولدر public
-
-// لما المتصفح يتصل أول مرة، اعمل refresh بعد ثانية
-liveReloadServer.server.once('connection', () => {
-  setTimeout(() => {
-    liveReloadServer.refresh('/');
-  }, 100);
-});
 
 //  إعداد الـ View Engine (EJS)
 app.set('view engine', 'ejs');
@@ -65,8 +48,26 @@ app.get('/add', (req, res) => res.render('add'));
 // 🧩 Middleware للـ JSON
 app.use(express.json());
 
+// لدعم بيانات الفورم
+app.use(express.urlencoded({ extended: true }));
+
+// اربطي LiveReload بالـ Express
+app.use(connectLiveReload());
+
+//  شغّلي LiveReload server
+
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, 'public')); // راقب فولدر public
+
+// لما المتصفح يتصل أول مرة، اعمل refresh بعد ثانية
+liveReloadServer.server.once('connection', () => {
+  setTimeout(() => {
+    liveReloadServer.refresh('/');
+  }, 100);
+});
+
+
 //أي request يبدأ بـ / يمشي على هذا Router
-const customerRoutes = require('./src/routes/customer');
 app.use('/', customerRoutes);
 
 

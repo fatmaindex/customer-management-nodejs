@@ -11,7 +11,7 @@ body {
   color: #f1f5f9;
   display: flex;
   height: 100vh;
-  a{
+  a {
     text-decoration: none;
   }
 }
@@ -28,7 +28,6 @@ body {
   margin-left: 240px;
   transition: margin 0.3s ease;
 }
-
 
 .action-btn {
   display: inline-block;
@@ -207,37 +206,143 @@ body {
 }
 
 /* 🧾 Table */
+
+/* 🧾 Table Wrapper */
 .table-wrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smoother on mobile */
 }
 
+/* Base Table */
 table {
   width: 100%;
   border-collapse: collapse;
   color: #e2e8f0;
+  min-width: 700px; /* مهم عشان مايكبسش فالموبايل */
 }
 
 thead {
   background: #334155;
 }
 
-th, td {
-  text-align: left;
+th,
+td {
   padding: 12px;
   border-bottom: 1px solid #475569;
+  white-space: nowrap; /* يمنع تكسير النص */
 }
 
-th {
-  font-weight: 600;
-  color: #cbd5e1;
-}
-
+/* Hover */
 tr:hover td {
   background: rgba(255, 255, 255, 0.05);
   transition: 0.2s;
 }
 
+/* ======================================== */
+/* 📱📱 Responsive: Mobile Fix */
+/* ======================================== */
+@media (max-width: 600px) {
+  th,
+  td {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  table {
+    min-width: 500px; /* أصغر شوية للموبايل */
+  }
+
+  .action-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
+/* لو عايزة شكل الـ Scroll */
+.table-wrap::-webkit-scrollbar {
+  height: 6px;
+}
+.table-wrap::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 10px;
+}
 /* 🎛 Action buttons */
+
+/* General icon style */
+.action-btn {
+  font-size: 17px;
+  padding: 8px 10px;
+  margin: 0 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.22s ease-in-out;
+}
+
+/* View */
+.action-btn.view {
+  color: #0d6efd;
+  background: #c9d1dcff;
+}
+.action-btn.view:hover {
+  background: #e7f1ff;
+  color: #084298;
+}
+
+/* Edit */
+.action-btn.edit {
+  color: #198754;
+}
+.action-btn.edit:hover {
+  background: #e8f5e9;
+  color: #145c32;
+}
+
+/* Delete */
+.action-btn.delete {
+  color: #dc3545;
+}
+.action-btn.delete:hover {
+  background: #fdeaea;
+  color: #a71d2a;
+}
+
+/* icons to be smoother */
+.action-btn i {
+  pointer-events: none;
+}
+
+/* View icon */
+.actions .icon.view {
+  color: #0d6efd;
+}
+
+.actions .icon.view:hover {
+  background: #e7f1ff;
+  color: #084298;
+}
+
+/* Edit icon */
+.actions .icon.edit {
+  color: #198754;
+}
+
+.actions .icon.edit:hover {
+  background: #e8f5e9;
+  color: #145c32;
+}
+
+/* Delete icon */
+.actions .icon.delete {
+  color: #dc3545;
+}
+
+.actions .icon.delete:hover {
+  background: #fdeaea;
+  color: #a71d2a;
+}
+
 .action-btn {
   padding: 6px 10px;
   border: none;
@@ -261,6 +366,7 @@ tr:hover td {
 .action-btn:hover {
   opacity: 0.8;
 }
+*/
 
 /* 🪟 Modal */
 .modal {
@@ -279,8 +385,14 @@ tr:hover td {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .modal-card {
@@ -288,7 +400,7 @@ tr:hover td {
   padding: 24px;
   border-radius: 12px;
   width: 360px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .modal-card h4 {
@@ -327,7 +439,22 @@ tr:hover td {
   display: flex;
   gap: 12px;
 }
+//-------------------------
+/* 🪟 Confirm Modal */
+.confirm-overlay {
+position: fixed;
+inset: 0;
+background: rgba(15, 23, 42, 0.85);
+display: none;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+}
 
+.confirm-overlay.show {
+display: flex;
+animation: popup 0.25s ease;
+}
 
 /* ============================= */
 /*   Add & View Pages Styling    */
@@ -427,7 +554,7 @@ tr:hover td {
   background: #0f172a;
   padding: 12px 20px;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* استجابة الشاشة الصغيرة */
@@ -440,5 +567,3 @@ tr:hover td {
     font-size: 18px;
   }
 }
-
-

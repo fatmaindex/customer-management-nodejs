@@ -1,4 +1,4 @@
-// 🔹 Toggle Sidebar (للشاشات الصغيرة)
+// 🔹Toggle Sidebar (للشاشات الصغيرة)
 const sidebar = document.querySelector('.sidebar');
 const menuToggle = document.querySelector('.menu-toggle');
 
@@ -17,13 +17,13 @@ document.addEventListener('click', (e) => {
   }
 });
 
+
 // 🔹 Delete Customer
+
+
 
 async function deleteCustomer(id) {
   if (!confirm("Are you sure you want to delete this customer?")) return;
-
-
-  // fetch betep3at request men el frontend lele server 
   const response = await fetch(`/delete/${id}`, {
     method: "DELETE"
   });
@@ -31,9 +31,6 @@ async function deleteCustomer(id) {
   const result = await response.json();
 
   if (result.message) {
-    // alert("Deleted Successfully");
-
-    //السطر ده بيعمل refresh للصفحة عشان الجدول يتحدث وتتشال الصفوف اللي اتحذفت.
     window.location.reload();
   }
 }

@@ -1,6 +1,4 @@
-// const { get } = require("mongoose");
 const Customer = require("../models/customerSchema");
-// const { search } = require("../routes/customer");
 
 // Create
 addCustomer = async (req, res) => {

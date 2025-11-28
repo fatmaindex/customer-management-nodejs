@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dashboard — Customers</title>
     <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="app">
@@ -43,20 +47,20 @@
                   <!-- <td><%= customer.createdAt %></td> -->
                   <td>
                     <a class="action-btn view" href="/view/<%= customer.id %>">
-                      👁️ View
+                      <i class="fa-solid fa-eye"></i>
                     </a>
 
                     <button
                       class="action-btn edit"
                       onclick="window.location.href='/edit/<%= customer.id %>'"
                     >
-                      Edit
+                      <i class="fa-solid fa-pen"></i>
                     </button>
                     <button
                       class="action-btn delete"
                       onclick="deleteCustomer('<%= customer.id %>')"
                     >
-                      Delete
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </td>
                 </tr>
