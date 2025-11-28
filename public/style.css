@@ -230,6 +230,8 @@ td {
   padding: 12px;
   border-bottom: 1px solid #475569;
   white-space: nowrap; /* يمنع تكسير النص */
+   text-align: center; /* ✅ يوسّط النص أفقياً */
+  vertical-align: middle; 
 }
 
 /* Hover */
