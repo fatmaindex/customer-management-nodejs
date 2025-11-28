@@ -73,7 +73,7 @@ deleteCustomer = async (req, res) => {
   }
 };
 
-//search customers
+//search customers by name ,email, phone, address or age.
 searchCustomers = async (req, res) => {
   try {
     const { searchInput } = req.query;

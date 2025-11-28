@@ -1,4 +1,4 @@
-// 🔹Toggle Sidebar (للشاشات الصغيرة)
+// Toggle Sidebar 
 const sidebar = document.querySelector('.sidebar');
 const menuToggle = document.querySelector('.menu-toggle');
 
@@ -8,7 +8,7 @@ if (menuToggle) {
   });
 }
 
-// 🔹 Close sidebar 
+//  Close sidebar 
 document.addEventListener('click', (e) => {
   if (window.innerWidth <= 900 && sidebar.classList.contains('open')) {
     if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
@@ -17,11 +17,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-
-// 🔹 Delete Customer
-
-
-
+//  Delete Customer
 async function deleteCustomer(id) {
   if (!confirm("Are you sure you want to delete this customer?")) return;
   const response = await fetch(`/delete/${id}`, {
@@ -29,7 +25,6 @@ async function deleteCustomer(id) {
   });
 
   const result = await response.json();
-
   if (result.message) {
     window.location.reload();
   }

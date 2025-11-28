@@ -14,14 +14,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-// 🟢 الاتصال بقاعدة البيانات
 connectDB();
 
-//  إعداد الـ View Engine (EJS)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// 📁 ملفات static زي CSS و JS
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -30,10 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //server side rendering
 app.get('/', async (req, res) => {
   try {
-    // جلب كل العملاء من الداتابيس
     const customers = await Customer.find();
 
-    // إرسالهم للـ EJS
     res.render('index', { customers });
   } catch (err) {
     console.error(err);
@@ -45,19 +40,16 @@ app.get('/add', (req, res) => res.render('add'));
 
 
 
-// 🧩 Middleware للـ JSON
+//  Middleware للـ JSON
 app.use(express.json());
 
-// لدعم بيانات الفورم
 app.use(express.urlencoded({ extended: true }));
 
-// اربطي LiveReload بالـ Express
 app.use(connectLiveReload());
 
-//  شغّلي LiveReload server
 
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'public')); // راقب فولدر public
+liveReloadServer.watch(path.join(__dirname, 'public')); 
 
 // لما المتصفح يتصل أول مرة، اعمل refresh بعد ثانية
 liveReloadServer.server.once('connection', () => {
@@ -71,7 +63,6 @@ liveReloadServer.server.once('connection', () => {
 app.use('/', customerRoutes);
 
 
-// 🚀 تشغيل السيرفر
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
